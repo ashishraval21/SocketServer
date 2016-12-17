@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.*;
+
 /**
  * Created by songline on 16/12/16.
  */
@@ -21,7 +22,11 @@ public class ServerSocket implements Runnable {
     static HashMap<String, Long> messageMap = null;
     int fiveSeconds = 5000;
 
-
+    /***
+     * initialize clientsocket's stream for sending and receiving data
+     * @param socket
+     * @throws Exception
+     */
     ServerSocket(Socket socket) throws Exception {
         inStream = new ObjectInputStream(socket.getInputStream());
         senderObjectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -31,6 +36,12 @@ public class ServerSocket implements Runnable {
 
     }
 
+    /***
+     * start server socket with port number.
+     * 5 thread are in the list which are running for different users for getting message or sending response to them.
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
 
@@ -48,6 +59,10 @@ public class ServerSocket implements Runnable {
         }
     }
 
+    /***
+     * this run methos run in a infinite loop with different stored list of socket to one by one
+     * and then works for Registration purpose and send message to target users.
+     */
 
     @Override
     public void run() {

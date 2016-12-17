@@ -22,6 +22,11 @@ public class ClientSocket {
     private boolean messageFlag = false;
     public static String uname = "";
 
+    /***
+     * start communicate with server with host and port number.
+     * ask for username first if successfully registered then it will be start messaging to users.
+     * @throws Exception
+     */
 
     public void startCommunicateWithServer() throws Exception {
         socket = new Socket("127.0.0.1", 2500);
@@ -48,9 +53,9 @@ public class ClientSocket {
                         if (message.getMessage().contains("Registered")) {
                             register = true;
 
-                            System.out.println("============================= Message Format =========================================================");
+                            System.out.println("============================= Message Format ============================================================");
                             System.out.println();
-                            System.out.println("EX. <YOUR MESSAGE>  <TargetId> . ||   Please Note There is a Space between YOUR MESSAGE and TargetId. " );
+                            System.out.println("EX. <YOUR MESSAGE>  <TargetId> . ||   Please Note There is a Space between YOUR MESSAGE and TargetId. ");
                             System.out.println();
                             System.out.println("============================== Start Messagging =========================================================");
 
